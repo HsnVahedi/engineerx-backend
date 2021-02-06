@@ -1,4 +1,8 @@
 __pycache__/
 .idea/
+.DS_Store
+*.sqlite3
+.credentials
 Pipfile
 Pipfile.lock
+
