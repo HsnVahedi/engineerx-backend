@@ -53,5 +53,10 @@ pipeline {
                 }
             }
         }
+        stage ('Invoke Unittest') {
+            steps {
+                build job: 'unittest', parameters: []
+            }
+        }
     }
 }
