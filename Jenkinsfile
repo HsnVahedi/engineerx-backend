@@ -48,10 +48,8 @@ pipeline {
                 docker { image 'hsndocker/cluster-unittest:latest' }
             }
             steps {
-                dir('kubectl') {
-                    sh 'ls'
-                    sh './kubectl get pods --all-namespaces'
-                }
+                sh 'ls'
+                sh './kubectl get pods --all-namespaces'
             }
         }
     }
