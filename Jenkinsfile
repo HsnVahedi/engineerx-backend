@@ -1,17 +1,15 @@
 pipeline {
-    agent none 
+    agent any
     stages {
         stage('Build Backend Microservice') {
-            agent any
             steps {
                 // echo 'Building..'
                 dir('engineerx') {
                     script {
-                        // withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
-                            // def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
-                            docker.build("hsndocker/backend:${env.BUILD_ID}")
-                            // backendImage.push()
-                        // }
+                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                            def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
+                            backendImage.push()
+                        }
                     }
                 }
             }
@@ -21,7 +19,10 @@ pipeline {
             steps {
                 dir('nginx') {
                     script {
-                            docker.build("hsndocker/backend-nginx:${env.BUILD_ID}")
+                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                            def backendImage = docker.build("hsndocker/backend-nginx:${env.BUILD_ID}")
+                            backendImage.push()
+                        }
                     }
                 }
             }
@@ -31,7 +32,10 @@ pipeline {
             steps {
                 dir('postgres') {
                     script {
-                            docker.build("hsndocker/backend-postgres:${env.BUILD_ID}")
+                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                            def backendImage = docker.build("hsndocker/backend-postgres:${env.BUILD_ID}")
+                            backendImage.push()
+                        }
                     }
                 }
             }
@@ -41,18 +45,12 @@ pipeline {
             steps {
                 dir('engineerx/dockerfiles/unittest') {
                     script {
-                            docker.build("hsndocker/backend-unittest:${env.BUILD_ID}")
+                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                            def backendImage = docker.build("hsndocker/backend-unittest:${env.BUILD_ID}")
+                            backendImage.push()
+                        }
                     }
                 }
-            }
-        }
-        stage('Backend Unittest') {
-            agent {
-                docker { image 'hsndocker/cluster-unittest:latest' }
-            }
-            steps {
-                sh 'ls'
-                sh './kubectl get pods --all-namespaces'
             }
         }
     }
