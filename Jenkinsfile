@@ -62,9 +62,9 @@ pipeline {
                 }
             }
             steps {
-                dir ('/root') {
-                    sh 'ls -a'
-                }
+                sh 'pwd'
+                sh 'cd /root'
+                sh 'ls -a'
             }
         } 
     }
