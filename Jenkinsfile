@@ -56,7 +56,10 @@ pipeline {
         }
         stage('Deploy Unittest') {
             agent {
-                docker { image 'hsndocker/cluster-unittest:latest' } 
+                docker {
+                    image 'hsndocker/cluster-unittest:latest'
+                    args '-u root:root'
+                }
             }
             steps {
                 dir ('/root') {
