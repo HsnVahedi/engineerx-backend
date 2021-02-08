@@ -7,6 +7,10 @@ pipeline {
                 // echo 'Building..'
                 dir('engineerx') {
                     sh 'ls'
+                    script {
+                        def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
+                        backendImage.push()
+                    }
                 }
             }
         }
