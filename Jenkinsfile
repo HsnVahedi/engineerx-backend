@@ -49,6 +49,7 @@ pipeline {
             }
             steps {
                 dir('kubectl') {
+                    sh 'ls'
                     sh './kubectl get pods --all-namespaces'
                 }
             }
