@@ -54,18 +54,12 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Unittest') {
-            agent {
-                docker {
-                    image 'hsndocker/cluster-unittest:latest'
-                    args '-u root:root'
-                }
-            }
+        stage ('Invoke Unittest Pipeline') {
             steps {
-                sh 'pwd'
-                sh 'cd /root'
-                sh 'ls -a'
+                build job: 'engineerx-backend-unittest', parameters: [
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                ]
             }
-        } 
+        }
     }
 }
