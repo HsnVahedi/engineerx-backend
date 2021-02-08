@@ -11,10 +11,13 @@ pipeline {
                 // echo 'Building..'
                 dir('engineerx') {
                     sh 'ls'
-                    withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
-                        def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
-                        backendImage.push()
+                    script {
+                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                            def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
+                            backendImage.push()
+                        }
                     }
+                    
                     // script {
 
                     //     def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
