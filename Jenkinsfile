@@ -5,7 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 // echo 'Building..'
-                sh 'ls'
+                dir('engineerx') {
+                    sh 'ls'
+                }
             }
         }
         // stage('Test') {
