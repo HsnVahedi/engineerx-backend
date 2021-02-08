@@ -1,8 +1,8 @@
 pipeline {
-    agent any
-
+    agent none 
     stages {
         stage('Build Backend Microservice') {
+            agent any
             steps {
                 // echo 'Building..'
                 dir('engineerx') {
@@ -17,6 +17,7 @@ pipeline {
             }
         }
         stage('Build Backend Nginx') {
+            agent any
             steps {
                 dir('nginx') {
                     script {
@@ -26,6 +27,7 @@ pipeline {
             }
         }
         stage('Build Backend Postgres') {
+            agent any
             steps {
                 dir('postgres') {
                     script {
@@ -35,6 +37,7 @@ pipeline {
             }
         }
         stage('Build Backend Unittest') {
+            agent any
             steps {
                 dir('engineerx/dockerfiles/unittest') {
                     script {
