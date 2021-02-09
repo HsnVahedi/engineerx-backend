@@ -8,5 +8,5 @@ from wagtail.core.models import Page
 
 class HomePage(Page):
     pass
-    # def serve(self, request, *args, **kwargs):
-    #     return HttpResponse(settings.DEBUG)
+    def serve(self, request, *args, **kwargs):
+        return HttpResponse(settings.DEBUG)
