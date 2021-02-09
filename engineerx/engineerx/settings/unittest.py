@@ -10,3 +10,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+]
