@@ -1,8 +1,7 @@
 pipeline {
-    agent none 
+    agent any
     stages {
         stage('Build Backend Microservice') {
-            agent any
             steps {
                 // echo 'Building..'
                 dir('engineerx') {
@@ -10,45 +9,50 @@ pipeline {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
                             backendImage.push()
+                            def latestImage = docker.build("hsndocker/backend:latest")
+                            latestImage.push()
                         }
                     }
                 }
             }
         }
         stage('Build Backend Nginx') {
-            agent any
             steps {
                 dir('nginx') {
                     script {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-nginx:${env.BUILD_ID}")
                             backendImage.push()
+                            def latestImage = docker.build("hsndocker/backend-nginx:latest")
+                            latestImage.push()
                         }
                     }
                 }
             }
         }
         stage('Build Backend Postgres') {
-            agent any
             steps {
                 dir('postgres') {
                     script {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-postgres:${env.BUILD_ID}")
                             backendImage.push()
+                            def latestImage = docker.build("hsndocker/backend-postgres:latest")
+                            latestImage.push()
                         }
                     }
                 }
             }
         }
         stage('Build Backend Unittest') {
-            agent any
             steps {
                 dir('engineerx/dockerfiles/unittest') {
                     script {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-unittest:${env.BUILD_ID}")
                             backendImage.push()
+                            def latestImage = docker.build("hsndocker/backend-unittest:latest")
+                            latestImage.push()
                         }
                     }
                 }
