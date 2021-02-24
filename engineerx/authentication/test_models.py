@@ -13,7 +13,7 @@ fake = Faker()
 class UserTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        fakedata.create_users(50)
+        fakedata.create_users(5)
 
     def test_creating_user_with_existing_email_raises_error(self):
         new_user = fakedata.FakeUser(fake.profile(), fake.password())

@@ -5,7 +5,7 @@ pipeline {
             steps {
                 dir('engineerx') {
                     script {
-                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                        withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
                             backendImage.push()
                             def latestImage = docker.build("hsndocker/backend:latest")
