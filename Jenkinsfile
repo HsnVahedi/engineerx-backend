@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Build Backend Microservice') {
             steps {
-                // echo 'Building..'
                 dir('engineerx') {
                     script {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {

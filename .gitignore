@@ -3,6 +3,7 @@ __pycache__/
 .DS_Store
 *.sqlite3
 .credentials
+engineerx/media
 Pipfile
 Pipfile.lock
 docker-build.sh

@@ -35,6 +35,7 @@ LOGGING = {
     },
 }
 
+INSTALLED_APPS.append('wagtail.contrib.styleguide')
 
 try:
     from .local import *

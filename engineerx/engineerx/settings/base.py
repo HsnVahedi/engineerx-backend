@@ -26,6 +26,10 @@ INSTALLED_APPS = [
     'authentication',
     'home',
     'search',
+    'posts',
+    'images',
+    'common',
+    'api',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.api.v2',
 
     'modelcluster',
     'taggit',
@@ -48,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +145,10 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+DOWNLOADS_ROOT = os.path.join(MEDIA_ROOT, 'downloads')
+IMAGE_DOWNLOADS_DIR = os.path.join(DOWNLOADS_ROOT, 'images')
+AVATAR_DOWNLOADS_DIR = os.path.join(DOWNLOADS_ROOT, 'avatars')
+
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "engineerx"
@@ -148,12 +159,25 @@ BASE_URL = 'http://example.com'
 
 AUTH_USER_MODEL = "authentication.User"
 
-WAGTAIL_USER_EDIT_FORM = 'authentication.forms.UserEditForm'
-WAGTAIL_USER_CREATION_FORM = 'authentication.forms.UserCreationForm'
+# WAGTAIL_USER_EDIT_FORM = 'authentication.forms.UserEditForm'
+# WAGTAIL_USER_CREATION_FORM = 'authentication.forms.UserCreationForm'
 # WAGTAIL_USER_CUSTOM_FIELDS = ['country', 'status']
+
+WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
 
 DJANGO_SUPERUSER_USERNAME = os.environ.get('DJANGO_SUPERUSER_USERNAME', 'admin')
 DJANGO_SUPERUSER_EMAIL = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@admin.com')
 DJANGO_SUPERUSER_PASSWORD = os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'admin password')
 DJANGO_SUPERUSER_FIRSTNAME = os.environ.get('DJANGO_SUPERUSER_FIRSTNAME', 'admin')
 DJANGO_SUPERUSER_LASTNAME = os.environ.get('DJANGO_SUPERUSER_LASTNAME', 'admin')
+
+DEFAULT_RICHTEXT_FEATURES = [
+    'h3', 'h4', 'h5', 'h6',
+    'bold', 'italic',
+    'ol', 'ul',
+    'hr', 'link', 'document-link'
+]
+
+RANDOM_IMAGE_URL = 'https://picsum.photos'
+RANDOM_AVATAR_URL = 'https://i.pravatar.cc'
+

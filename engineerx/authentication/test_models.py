@@ -15,7 +15,7 @@ class UserTestCase(TestCase):
     def setUpTestData(cls):
         fakedata.create_users(50)
 
-    def test_user_with_existing_email_not_created(self):
+    def test_creating_user_with_existing_email_raises_error(self):
         new_user = fakedata.FakeUser(fake.profile(), fake.password())
         existing_user = User.objects.first()
         with self.assertRaises(IntegrityError):
