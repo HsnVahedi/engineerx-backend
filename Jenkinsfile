@@ -8,8 +8,6 @@ pipeline {
                         withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend:${env.BUILD_ID}")
                             backendImage.push()
-                            def latestImage = docker.build("hsndocker/backend:latest")
-                            latestImage.push()
                         }
                     }
                 }
@@ -22,8 +20,6 @@ pipeline {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-nginx:${env.BUILD_ID}")
                             backendImage.push()
-                            def latestImage = docker.build("hsndocker/backend-nginx:latest")
-                            latestImage.push()
                         }
                     }
                 }
@@ -36,8 +32,6 @@ pipeline {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-postgres:${env.BUILD_ID}")
                             backendImage.push()
-                            def latestImage = docker.build("hsndocker/backend-postgres:latest")
-                            latestImage.push()
                         }
                     }
                 }
@@ -50,8 +44,6 @@ pipeline {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-unittest:${env.BUILD_ID}")
                             backendImage.push()
-                            def latestImage = docker.build("hsndocker/backend-unittest:latest")
-                            latestImage.push()
                         }
                     }
                 }
