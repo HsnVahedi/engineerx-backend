@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Build Backend Microservice') {
             steps {
+                sh 'cat engineerx/unittest.sh'
                 dir('engineerx') {
                     script {
                         withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
