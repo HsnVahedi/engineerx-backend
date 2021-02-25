@@ -38,18 +38,18 @@ pipeline {
                 }
             }
         }
-        stage('Build Backend Unittest') {
-            steps {
-                dir('engineerx/dockerfiles/unittest') {
-                    script {
-                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
-                            def backendImage = docker.build("hsndocker/backend-unittest:${env.BUILD_ID}")
-                            backendImage.push()
-                        }
-                    }
-                }
-            }
-        }
+        // stage('Build Backend Unittest') {
+        //     steps {
+        //         dir('engineerx/dockerfiles/unittest') {
+        //             script {
+        //                 withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+        //                     def backendImage = docker.build("hsndocker/backend-unittest:${env.BUILD_ID}")
+        //                     backendImage.push()
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         stage ('Invoke Unittest Pipeline') {
             steps {
                 build job: 'engineerx-backend-unittest', parameters: [
