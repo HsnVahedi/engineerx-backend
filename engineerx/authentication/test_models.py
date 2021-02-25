@@ -14,7 +14,7 @@ fake = Faker()
 class UserTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        download.download_random_avatars(10)
+        # download.download_random_avatars(10)
         # download.download_random_images(10)
         fakedata.create_users(5)
 
