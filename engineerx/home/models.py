@@ -77,3 +77,7 @@ class PostPage(Page):
     ]
     promote_panels = []
     settings_panels = []
+
+    def serve(self, request):
+        site_id, site_root, relative_page_url = self.get_url_parts(request)
+        return redirect(f'/posts/{relative_page_url}')
