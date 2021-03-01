@@ -78,6 +78,16 @@ class PostPage(Page):
     promote_panels = []
     settings_panels = []
 
-    def serve(self, request):
-        site_id, site_root, relative_page_url = self.get_url_parts(request)
-        return redirect(f'/posts/{relative_page_url}')
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super().get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, f'/posts/{self.slug}') 
