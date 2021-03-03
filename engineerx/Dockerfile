@@ -20,7 +20,7 @@ RUN apt-get install --yes --quiet --no-install-recommends libjpeg62-turbo-dev
 RUN apt-get install --yes --quiet --no-install-recommends zlib1g-dev
 RUN apt-get install --yes --quiet --no-install-recommends libwebp-dev
 RUN apt-get install --yes --quiet --no-install-recommends python3-opencv
-RUN rm -rf /var/lib/apt/lists/*
+# RUN rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
 RUN pip install "gunicorn==20.0.4"
