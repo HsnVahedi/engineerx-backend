@@ -46,5 +46,19 @@ pipeline {
                 ]
             }
         }
+        stage('Invoke Integration Test Pipeline') {
+            steps {
+                build job: 'engineerx-integration', parameters: [
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                ]
+            }
+        }
+        stage('Invoke Setting latest tags') {
+            steps {
+                build job: 'engineerx-backend-latest-tag', parameters: [
+                    string(name: "BACKEND_VERSION", value: "${params.BACKEND_VERSION}")
+                ]
+            }
+        }
     }
 }
