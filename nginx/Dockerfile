@@ -1,6 +1,7 @@
-ARG CONF_FILE=nginx.production.conf
+ARG INTEGRATION 
 FROM nginx:1.18.0-alpine
 
 RUN rm /etc/nginx/conf.d/default.conf
-RUN mv $CONF_FILE nginx.conf
+RUN if [[ -z "$INTEGRATION" ]] ; then mv nginx.production.conf nginx.conf ; else mv nginx.integration.conf nginx.conf ; fi
+
 COPY nginx.conf /etc/nginx/conf.d
