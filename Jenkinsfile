@@ -20,6 +20,8 @@ pipeline {
                         withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-nginx:${env.BUILD_ID}")
                             backendImage.push()
+                            def integrationImage = docker.build("hsndocker/backend-integration-nginx:${env.BUILD_ID}", "--build-arg CONF_FILE=nginx.integration.conf .")
+                            integrationImage.push()
                         }
                     }
                 }
