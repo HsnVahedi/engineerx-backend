@@ -31,7 +31,10 @@ RUN apt-get install --yes --quiet --no-install-recommends nodejs
 # Install system packages required by cypress
 RUN apt-get install --yes --quiet --no-install-recommends libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
-# RUN rm -rf /var/lib/apt/lists/*
+# Install git
+RUN apt-get install --yes --quiet --no-install-recommends git
+
+RUN rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
 RUN pip install "gunicorn==20.0.4"
@@ -46,11 +49,13 @@ RUN pip install psycopg2
 RUN pip install Faker
 
 # User /integration folder as a directory where the integration test code is stored.
-WORKDIR /integration
-COPY package*.json /integration/
-RUN npm install
-COPY  . .
+# WORKDIR /integration
+# COPY package*.json /integration/
+# RUN npm install
+# COPY  . .
 
+WORKDIR /integration
+RUN git clone https://github.com/HsnVahedi/engineerx-integration
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
 COPY  . .
