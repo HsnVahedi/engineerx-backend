@@ -31,7 +31,7 @@ pipeline {
             steps {
                 dir('postgres') {
                     script {
-                        withDockerRegistry([ credentialsId: "dockerhub-credentials", url: "" ]) {
+                        withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
                             def backendImage = docker.build("hsndocker/backend-postgres:${env.BUILD_ID}")
                             backendImage.push()
                         }
