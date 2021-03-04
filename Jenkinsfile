@@ -27,16 +27,6 @@ pipeline {
                 }
             }
         }
-        stage('Build Integration Image') {
-            steps {
-                script {
-                    withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
-                        def image = docker.build("hsndocker/integration-test:${env.BUILD_ID}", "--build-arg BACKEND_IMAGE=hsndocker/backend:${env.BUILD_ID} .")
-                        image.push()
-                    }
-                }
-            }
-        }
         stage('Build Backend Postgres') {
             steps {
                 dir('postgres') {
@@ -49,9 +39,16 @@ pipeline {
                 }
             }
         }
-        stage ('Invoke Unittest Pipeline') {
+        stage('Invoke Unittest Pipeline') {
             steps {
                 build job: 'engineerx-backend-unittest', parameters: [
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                ]
+            }
+        }
+        stage('Invoke Building Integration Image') {
+            steps {
+                build job: 'engineerx-integration', parameters: [
                     string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
                 ]
             }
