@@ -20,6 +20,17 @@ RUN apt-get install --yes --quiet --no-install-recommends libjpeg62-turbo-dev
 RUN apt-get install --yes --quiet --no-install-recommends zlib1g-dev
 RUN apt-get install --yes --quiet --no-install-recommends libwebp-dev
 RUN apt-get install --yes --quiet --no-install-recommends python3-opencv
+
+
+# Install system packages required by node js
+RUN apt-get install --yes --quiet --no-install-recommends curl
+RUN apt-get install --yes --quiet --no-install-recommends software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install --yes --quiet --no-install-recommends nodejs
+
+# Install system packages required by cypress
+RUN apt-get install --yes --quiet --no-install-recommends libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+
 # RUN rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
