@@ -9,6 +9,6 @@ Pipfile.lock
 docker-build.sh
 docker-push.sh
 
-integration/cypress/videos/
-integration/cypress/screenshots/
-integration/node_modules/
+engineerx/integration/cypress/videos/
+engineerx/integration/cypress/screenshots/
+engineerx/integration/node_modules/

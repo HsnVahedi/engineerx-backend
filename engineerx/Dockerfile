@@ -48,14 +48,12 @@ RUN pip install "wagtail==2.11"
 RUN pip install psycopg2
 RUN pip install Faker
 
-# User /integration folder as a directory where the integration test code is stored.
-# WORKDIR /integration
-# COPY package*.json /integration/
-# RUN npm install
-# COPY  . .
-
+# Use /integration folder as a directory where the integration test code is stored.
 WORKDIR /integration
-RUN git clone https://github.com/HsnVahedi/engineerx-integration
+COPY integration/package*.json /integration/
+RUN npm install
+COPY  integration/ .
+
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
 COPY  . .
