@@ -8,3 +8,6 @@ Pipfile
 Pipfile.lock
 docker-build.sh
 docker-push.sh
+
+integration/cypress/videos
+integration/cypress/screenshots
