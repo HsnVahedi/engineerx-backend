@@ -46,12 +46,5 @@ pipeline {
                 ]
             }
         }
-        stage('Invoke Building Integration Image') {
-            steps {
-                build job: 'engineerx-integration', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
-                ]
-            }
-        }
     }
 }

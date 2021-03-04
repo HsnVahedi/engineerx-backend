@@ -43,7 +43,13 @@ RUN pip install opencv-python
 RUN pip install "Django==3.1"
 RUN pip install "wagtail==2.11"
 RUN pip install psycopg2
-RUN pip install Faker
+RUN pip install Fakervjjj
+
+# User /integration folder as a directory where the integration test code is stored.
+WORKDIR /integration
+COPY package*.json /integration/
+RUN npm install
+COPY  . .
 
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
