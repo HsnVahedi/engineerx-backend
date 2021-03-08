@@ -90,4 +90,4 @@ class PostPage(Page):
         site_id, root_url, page_path = url_parts
 
         # return '/' in place of the real page path
-        return (site_id, root_url, f'/posts/{self.slug}') 
+        return site_id, root_url, f'/posts/{self.slug}'

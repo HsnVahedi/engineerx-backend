@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    # TODO => uncomment this line
-    # 'authentication',
+    'authentication',
     'home',
     'search',
     'posts',
@@ -158,8 +157,7 @@ WAGTAIL_SITE_NAME = "engineerx"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
-# TODO => uncomment this line
-# AUTH_USER_MODEL = "authentication.User"
+AUTH_USER_MODEL = "authentication.User"
 
 # WAGTAIL_USER_EDIT_FORM = 'authentication.forms.UserEditForm'
 # WAGTAIL_USER_CREATION_FORM = 'authentication.forms.UserCreationForm'
