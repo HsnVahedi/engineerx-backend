@@ -46,10 +46,10 @@ RUN pip install psycopg2
 RUN pip install Faker
 
 # Use /integration folder as a directory where the integration test code is stored.
-WORKDIR /integration
-COPY integration/package*.json /integration/
-RUN npm install
-COPY  integration/ .
+# WORKDIR /integration
+# COPY integration/package*.json /integration/
+# RUN npm install
+# COPY  integration/ .
 
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
