@@ -47,21 +47,21 @@ pipeline {
         }
         stage('Invoke Unittest Pipeline') {
             steps {
-                build job: 'engineerx-backend-unittest', parameters: [
+                build job: 'backend-test', parameters: [
                     string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
                 ]
             }
         }
         stage('Invoke Integration Test Pipeline') {
             steps {
-                build job: 'engineerx-integration', parameters: [
+                build job: 'integration', parameters: [
                     string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
                 ]
             }
         }
         stage('Invoke Setting latest tags') {
             steps {
-                build job: 'engineerx-backend-latest-tag', parameters: [
+                build job: 'backend-latest-tag', parameters: [
                     string(name: "BACKEND_VERSION", value: "${params.BACKEND_VERSION}")
                 ]
             }
