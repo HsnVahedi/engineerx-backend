@@ -62,7 +62,7 @@ pipeline {
         stage('Invoke Setting latest tags') {
             steps {
                 build job: 'backend-latest-tag', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${params.BACKEND_VERSION}")
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
                 ]
             }
         }
