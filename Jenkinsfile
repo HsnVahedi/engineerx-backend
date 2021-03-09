@@ -54,7 +54,7 @@ pipeline {
         }
         stage('Invoke Integration Test Pipeline') {
             steps {
-                build job: 'integration', parameters: [
+                build job: 'integration-test', parameters: [
                     string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
                 ]
             }
