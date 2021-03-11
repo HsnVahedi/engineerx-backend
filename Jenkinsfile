@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build Backend Images') {
             parallel {
-                stage('Build Backend Microservice') {
+                stage('Backend Microservice') {
                     steps {
                         dir('engineerx') {
                             script {
@@ -15,7 +15,7 @@ pipeline {
                         }
                     }
                 }
-                stage('Build Backend Nginx') {
+                stage('Backend Nginx') {
                     steps {
                         dir('nginx') {
                             script {
@@ -36,7 +36,7 @@ pipeline {
                         }
                     }
                 }
-                stage('Build Backend Postgres') {
+                stage('Backend Postgres') {
                     steps {
                         dir('postgres') {
                             script {
@@ -48,7 +48,6 @@ pipeline {
                         }
                     }
                 }
-        
             }
         } 
         stage('Invoke Unittest Pipeline') {
