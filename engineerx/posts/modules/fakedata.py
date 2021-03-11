@@ -23,7 +23,6 @@ def create_paragraph_block():
     return {
         'type': 'paragraph',
         'value': create_fake_richtext(),
-        # 'id': 'd59d1c12-2027-458e-a7e9-d230283f8b81'
     }
 
 
@@ -33,7 +32,6 @@ def create_image_block():
     return {
         'type': 'image',
         'value': {'image': image.id, 'caption': create_fake_richtext()},
-        # 'id': '4bd207d7-acd7-4c8b-beec-438b8c9a6681'
     }
 
 

@@ -1,16 +1,15 @@
-from random import random
+from wagtail.tests.utils import WagtailPageTests
 
-from django.contrib.auth import get_user_model
-from django.test import TestCase
-
-from posts.modules import fakedata as posts_fakedata
-from authentication.modules import fakedata as auth_fakedata
-
-User = get_user_model()
+from home.models import PostPage, HomePage
 
 
-class PageTestCase(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        cls.users = auth_fakedata.create_users(50)
+class PostPageTestCase(WagtailPageTests):
+    def test_post_pages_parents(self):
+        self.assertAllowedParentPageTypes(
+            PostPage, {HomePage}
+        )
 
+    def test_home_page_children(self):
+        self.assertAllowedSubpageTypes(
+            HomePage, {PostPage}
+        )
