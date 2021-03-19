@@ -71,12 +71,5 @@ pipeline {
                 ]
             }
         }
-        stage('Invoke Production Deployment') {
-            steps {
-                build job: 'deployment', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
-                ]
-            }
-        }
     }
 }
