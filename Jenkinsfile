@@ -29,8 +29,8 @@ pipeline {
                         dir('nginx/integration') {
                             script {
                                 withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
-                                def integrationImage = docker.build("hsndocker/backend-integration-nginx:${env.BUILD_ID}")
-                                integrationImage.push()
+                                    def integrationImage = docker.build("hsndocker/backend-integration-nginx:${env.BUILD_ID}")
+                                    integrationImage.push()
                                 }
                             }
                         }
@@ -49,7 +49,7 @@ pipeline {
                     }
                 }
             }
-        } 
+        }
         stage('Invoke Unittest Pipeline') {
             steps {
                 build job: 'backend-test', parameters: [
