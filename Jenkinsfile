@@ -71,5 +71,12 @@ pipeline {
                 ]
             }
         }
+        stage('Invoke Production Deployment') {
+            steps {
+                build job: 'aws-deployment', parameters: [
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                ]
+            }
+        }
     }
 }
