@@ -53,7 +53,9 @@ pipeline {
         stage('Invoke Unittest Pipeline') {
             steps {
                 build job: 'backend-test', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
+                    string(name: "REGION", value: "${env.REGION}"),
+                    string(name: "CLUSTER_NAME", value: "${env.CLUSTER_NAME}")
                 ]
             }
         }
@@ -67,14 +69,16 @@ pipeline {
         stage('Invoke Setting latest tags') {
             steps {
                 build job: 'backend-latest-tag', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
                 ]
             }
         }
         stage('Invoke Production Deployment') {
             steps {
                 build job: 'aws-deployment', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
+                    string(name: "REGION", value: "${env.REGION}"),
+                    string(name: "CLUSTER_NAME", value: "${env.CLUSTER_NAME}")
                 ]
             }
         }
