@@ -1,5 +1,13 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'CLUSTER_NAME', defaultValue: 'engineerx')
+        string(name: 'REGION', defaultValue: 'us-east-2')
+    }
+    environment {
+        REGION = "${params.REGION}"
+        CLUSTER_NAME = "${params.CLUSTER_NAME}"
+    }
     stages {
         stage('Build Backend Images') {
             parallel {
