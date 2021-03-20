@@ -3,10 +3,10 @@ from .productionbase import *
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'engineerx',
+        'USER': 'engineerx',
         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'HOST': 'backend-postgres',
+        'HOST': os.environ['POSTGRES_ENDPOINT'],
         'PORT': '5432',
     }
 }
