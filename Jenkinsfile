@@ -22,8 +22,8 @@ pipeline {
                                 sh('mv Dockerfile prod.Dockerfile')
                                 sh('mv dev.Dockerfile Dockerfile')
                                 withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
-                                    def backendImage = docker.build("hsndocker/backend-dev:${env.BUILD_ID}")
-                                    backendImage.push()
+                                    def backendDevImage = docker.build("hsndocker/backend-dev:${env.BUILD_ID}")
+                                    backendDevImage.push()
                                 }
                             }
                         }
