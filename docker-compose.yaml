@@ -21,7 +21,7 @@ services:
        ./wait-for-it.sh db:5432 -- ./start-local.sh 
     environment:
       - POSTGRES_PASSWORD
-      # - FRONTEND_URL="http://localhost:8000"
+      - FRONTEND_URL=http://127.0.0.1:3000
     networks:
       - engineerx-backend
     volumes: 

@@ -81,6 +81,7 @@ class PostPage(Page):
     settings_panels = []
 
     def serve(self, request, *args, **kwargs):
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@', f'{settings.FRONTEND_URL}/posts/{self.slug}')
         return redirect(f'{settings.FRONTEND_URL}/posts/{self.slug}')
 
     # def get_url_parts(self, *args, **kwargs):
