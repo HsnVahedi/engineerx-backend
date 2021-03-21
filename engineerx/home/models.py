@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.shortcuts import redirect
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -78,16 +80,22 @@ class PostPage(Page):
     promote_panels = []
     settings_panels = []
 
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super().get_url_parts(*args, **kwargs)
+    def serve(self, request, *args, **kwargs):
+        return redirect(f'{settings.FRONTEND_URL}/posts/{self.slug}')
 
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
+    # def get_url_parts(self, *args, **kwargs):
+    #     url_parts = super().get_url_parts(*args, **kwargs)
 
-        site_id, root_url, page_path = url_parts
+    #     if url_parts is None:
+    #         # in this case, the page doesn't have a well-defined URL in the first place -
+    #         # for example, it's been created at the top level of the page tree
+    #         # and hasn't been associated with a site record
+    #         return None
 
-        # return '/' in place of the real page path
-        return site_id, root_url, f'/posts/{self.slug}'
+    #     site_id, root_url, page_path = url_parts
+
+    #     # return '/' in place of the real page path
+
+    #     print('@@@@@@@@@@@@@@@@@@', settings.FRONTEND_URL)
+    #     return site_id, settings.FRONTEND_URL, f'/posts/{self.slug}'
+    #     # return site_id, root_url, f'/posts/{self.slug}'

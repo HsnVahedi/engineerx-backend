@@ -48,6 +48,15 @@ pipeline {
                                 }
                             }
                         }
+
+                        dir('nginx/local') {
+                            script {
+                                withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
+                                    def integrationImage = docker.build("hsndocker/backend-local-nginx:${env.BUILD_ID}")
+                                    integrationImage.push()
+                                }
+                            }
+                        }
                     }
                 }
                 stage('Backend Postgres') {
