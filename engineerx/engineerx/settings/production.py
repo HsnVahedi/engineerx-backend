@@ -1,5 +1,7 @@
 from .productionbase import *
 
+PRODUCTION = True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
