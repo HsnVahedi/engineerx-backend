@@ -187,3 +187,5 @@ RANDOM_IMAGE_URL = 'https://picsum.photos'
 RANDOM_AVATAR_URL = 'https://i.pravatar.cc'
 
 FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
+
+PRODUCTION = False
