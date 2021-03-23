@@ -81,7 +81,6 @@ class PostPage(Page):
     settings_panels = []
 
     def serve(self, request, *args, **kwargs):
-        print('@@@@@@@@@@@@@@@@@@@@@@@@@@', f'{settings.FRONTEND_URL}/posts/{self.slug}')
         return redirect(f'{settings.FRONTEND_URL}/posts/{self.slug}')
 
     def get_url_parts(self, *args, **kwargs):
@@ -92,10 +91,8 @@ class PostPage(Page):
             # for example, it's been created at the top level of the page tree
             # and hasn't been associated with a site record
             return None
-        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', settings.FRONTEND_URL)
         if settings.PRODUCTION:
             site_id, root_url, page_path = url_parts
             return site_id, root_url, f'/posts/{self.slug}'
         else:
             return url_parts
-        # return site_id, root_url, f'/posts/{self.slug}'
