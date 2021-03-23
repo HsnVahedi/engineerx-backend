@@ -174,7 +174,8 @@ DEFAULT_RICHTEXT_FEATURES = [
     'h3', 'h4', 'h5', 'h6',
     'bold', 'italic',
     'ol', 'ul',
-    'hr', 'link', 'document-link'
+    'hr', 'link',
+    # 'document-link'
 ]
 
 RANDOM_IMAGE_URL = 'https://picsum.photos'
