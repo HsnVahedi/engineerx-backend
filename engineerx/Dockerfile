@@ -38,5 +38,3 @@ RUN pip install Faker
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
 COPY  . .
-RUN rm manage.py && mv manage.prod.py manage.py
-RUN rm engineerx/wsgi.py && mv engineerx/wsgi.prod.py engineerx/wsgi.py
