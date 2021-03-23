@@ -67,20 +67,24 @@ pipeline {
                 }
             }
         }
-        stage('Invoke Unittest Pipeline') {
-            steps {
-                build job: 'backend-test', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
-                    string(name: "REGION", value: "${env.REGION}"),
-                    string(name: "CLUSTER_NAME", value: "${env.CLUSTER_NAME}")
-                ]
-            }
-        }
-        stage('Invoke Integration Test Pipeline') {
-            steps {
-                build job: 'integration-test', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
-                ]
+        stage('Invoke Tests') {
+            parallel {
+                stage('Invoke Unittest Pipeline') {
+                    steps {
+                        build job: 'backend-test', parameters: [
+                            string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
+                            string(name: "REGION", value: "${env.REGION}"),
+                            string(name: "CLUSTER_NAME", value: "${env.CLUSTER_NAME}")
+                        ]
+                    }
+                }
+                stage('Invoke Integration Test Pipeline') {
+                    steps {
+                        build job: 'integration-test', parameters: [
+                            string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}")
+                        ]
+                    }
+                }
             }
         }
         stage('Invoke Setting latest tags') {
