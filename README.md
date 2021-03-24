@@ -96,6 +96,24 @@ The page model has a few fields:
     
 Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
 
+
+## Run Production Environment
+
+#### 1. Clone this repository:
+    git clone https://github.com/HsnVahedi/engineerx-backend
+#### 2. Pull the required docker images:
+    docker-compose pull
+#### 3. Start the production server:
+    docker-compose up
+#### 4. Now open another terminal and execute bash in the django container:
+    docker-compose exec backend bash
+#### 5. Initialize the database 
+    python manage.py initdb
+#### 6. Create an admin user:
+    python manage.py createsuperuser
+
+Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
+
 ## Contributing
 
 Please read through our [contributing guidelines](https://reponame/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
