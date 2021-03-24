@@ -77,8 +77,6 @@ The page model has a few fields:
 
 ## Run Development Environment
 
-The easiest way is to use [this Dockerfile](https://github.com/HsnVahedi/engineerx-backend/blob/main/engineerx/Dockerfile):
-
 #### 1. Clone this repository:
     git clone https://github.com/HsnVahedi/engineerx-backend
 #### 2. Build the docker image:
