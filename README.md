@@ -42,7 +42,7 @@ Key features of the project:
 
 
 
-## EngineerX Backend Microservices
+## engineerx-backend-microservices
 This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created by wagtail.
 
 Wagtail has many built-in features including Elastic Search integration. To see all of wagtail's built-in features, check [this](https://wagtail.io/features/#) out.
