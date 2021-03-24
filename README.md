@@ -69,6 +69,7 @@ Here is our blog's PostPage which inherits wagtail's Page:
             StreamFieldPanel('sections'),
             FieldPanel('tags')
         ]
+        ...
 
 The page model has a few fields:
 
