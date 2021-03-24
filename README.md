@@ -13,7 +13,6 @@
 ## Table of contents
 
 - [Introduction to EngineerX project](#introduction-to-engineerx-project)
-- [Status](#status)
 - [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
@@ -37,24 +36,10 @@ Key features of the project:
 - It uses [Jenkins](https://www.jenkins.io/) declarative pipeline syntax to implement [CI/CD](https://en.wikipedia.org/wiki/CI/CD) pipelines. (Pipeline as code)
 - Developers are able to write different kinds of tests and run them in a parallelized and non-blocking manner.
 - It uses [Terraform](https://www.terraform.io/) to provision the required cloud infrastructure so it's really easy to deploy the whole project and destroy it whenever it's not needed any more. (Infrastructure as code)
-## Status
-
-Here goes all the budgets
+- It has built on top of wagtail. Wagtail enables django developers to have a professional CMS which can be customized for many types of businesses.
 
 ## What's included
-
-Some text
-
-```text
-folder1/
-└── folder2/
-    ├── folder3/
-    │   ├── file1
-    │   └── file2
-    └── folder4/
-        ├── file3
-        └── file4
-```
+This repository contains the project's backend microservices. The most important microservice is the django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx). 
 
 ## Bugs and feature requests
 
