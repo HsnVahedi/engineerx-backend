@@ -19,6 +19,9 @@
 - [EngineerX code repositories](#engineerx-code-repositories)
 
 
+
+
+
 ## Introduction to EngineerX project
 
 EngineerX is an open source web application designed for engineers and specialists letting them share their ideas, create tutorials, represent themselves, employ other specialists and ...
@@ -35,6 +38,9 @@ Key features of the project:
 - Developers are able to write different kinds of tests and run them in a parallelized and non-blocking manner.
 - It uses [Terraform](https://www.terraform.io/) to provision the required cloud infrastructure so it's really easy to deploy the whole project and destroy it whenever it's not needed any more. (Infrastructure as code)
 - It's built on top of wagtail. Wagtail enables django developers to have a professional headless CMS which can be customized for many types of businesses.
+
+
+
 
 ## What's included
 This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created by wagtail.
@@ -76,6 +82,9 @@ The page model has a few fields:
 - `content_panels`: These panels are used by wagtail to create an appropriate django form for the page.
 
 
+
+
+
 ## Run Development Environment
 
 #### 1. Clone this repository:
@@ -98,6 +107,9 @@ The page model has a few fields:
 Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
 
 
+
+
+
 ## Run Production Environment
 
 #### 1. Clone this repository:
@@ -114,6 +126,9 @@ Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.
     python manage.py createsuperuser
 
 Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
+
+
+
 
 ## EngineerX code repositories
 
