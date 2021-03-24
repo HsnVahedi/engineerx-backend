@@ -115,6 +115,7 @@ Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.
 #### 1. Clone this repository:
     git clone https://github.com/HsnVahedi/engineerx-backend
 #### 2. Pull the required docker images:
+    cd engineerx-backend
     docker-compose pull
 #### 3. Start the production server:
     docker-compose up
