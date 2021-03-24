@@ -83,21 +83,19 @@ The easiest way is to use [this Dockerfile](https://github.com/HsnVahedi/enginee
     git clone https://github.com/HsnVahedi/engineerx-backend
 #### 2. Build the docker image:
     cd engineerx-backend/engineerx
-    docker build . -t -p 8000:8000 engineerx-backend-django:latest
-#### 3. Run the docker container and expose it's port:
-    docker run -it engineerx-backend-django:latest bash
+    docker build . -t engineerx-backend-django:latest
+#### 3. Run the docker container and publish it's port:
+    docker run -it -p 8000:8000 engineerx-backend-django:latest bash
 #### 4. Create development database:
     python manage.py makemigrations && python manage.py migrate
-#### 5. Initialize development database with randomly generated objects:
+#### 5. Initialize the database with randomly generated objects:
     python manage.py initdb
-#### 6. Initialize the database with randomly generated objects:
-    python manage.py initdb
-#### 7. Create an admin user:
+#### 6. Create an admin user:
     python manage.py createsuperuser
-#### 8. Start the development server:
+#### 7. Start the development server:
     python manage.py runserver 0.0.0.0:8000
     
-Now you can see the project is running on `127.0.0.1:8000/`
+Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
 
 ## Contributing
 
