@@ -13,7 +13,7 @@
 ## Table of contents
 
 - [Introduction to EngineerX project](#introduction-to-engineerx-project)
-- [EngineerX Backend Microservices](#engineerx-backend-microservices)
+- [Backend Microservices](#backend-microservices)
 - [Run Development Environment](#run-development-environment)
 - [Run Production Environment](#run-production-environment)
 - [EngineerX code repositories](#engineerx-code-repositories)
@@ -42,7 +42,7 @@ Key features of the project:
 
 
 
-## engineerx backend microservices
+## Backend Microservices
 This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created by wagtail.
 
 Wagtail has many built-in features including Elastic Search integration. To see all of wagtail's built-in features, check [this](https://wagtail.io/features/#) out.
