@@ -129,6 +129,6 @@ EngineerX is a big project and consists of several code bases:
 - [engineerx-frontend-unittest](https://github.com/HsnVahedi/engineerx-frontend-unittest)
 - [engineerx-integration-test](https://github.com/HsnVahedi/engineerx-integration-test)
 - [engineerx-efs-pv](https://github.com/HsnVahedi/engineerx-efs-pv)
-- [engineerx-efs-pvc](https://github.com/HsnVahedi/engineerx-efs-pv)
+- [engineerx-efs-pvc](https://github.com/HsnVahedi/engineerx-efs-pvc)
 - [engineerx-backend-latest-tag](https://github.com/HsnVahedi/engineerx-backend-latest-tag)
 - [engineerx-frontend-latest-tag](https://github.com/HsnVahedi/engineerx-frontend-latest-tag)
