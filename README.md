@@ -36,10 +36,39 @@ Key features of the project:
 - It uses [Jenkins](https://www.jenkins.io/) declarative pipeline syntax to implement [CI/CD](https://en.wikipedia.org/wiki/CI/CD) pipelines. (Pipeline as code)
 - Developers are able to write different kinds of tests and run them in a parallelized and non-blocking manner.
 - It uses [Terraform](https://www.terraform.io/) to provision the required cloud infrastructure so it's really easy to deploy the whole project and destroy it whenever it's not needed any more. (Infrastructure as code)
-- It has built on top of wagtail. Wagtail enables django developers to have a professional CMS which can be customized for many types of businesses.
+- It has built on top of wagtail. Wagtail enables django developers to have a professional headless CMS which can be customized for many types of businesses.
 
 ## What's included
-This repository contains the project's backend microservices. The most important microservice is the django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx). 
+This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created using wagtail.
+
+Wagtail has many built-in features including Elastic Search integration. To see all of wagtail's built-in features, check [this](https://wagtail.io/features/#) out.
+
+Here is our blog's PostPage which inherits wagtail's Page:
+
+    class PostPage(Page):
+        image = models.ForeignKey(
+            'wagtailimages.Image',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
+        )
+        sections = StreamField(SectionsBlock())
+        tags = ClusterTaggableManager(through=TaggedPost, blank=True)
+
+        api_fields = [
+            APIField('image', serializer=ImageRenditionField('min-1500x200')),
+            APIField('image_16x9', serializer=ImageRenditionField('fill-1600x900-c70', source='image')),
+            APIField('sections'),
+            APIField('tags'),
+            APIField('owner_info'),
+        ]
+
+        content_panels = Page.content_panels + [
+            ImageChooserPanel('image'),
+            StreamFieldPanel('sections'),
+            FieldPanel('tags')
+        ]
 
 ## Bugs and feature requests
 
