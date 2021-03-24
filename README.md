@@ -70,6 +70,11 @@ Here is our blog's PostPage which inherits wagtail's Page:
             FieldPanel('tags')
         ]
 
+The page model has a few fields:
+
+- `sections`: Contains page's content. Check Wagtail's StreamField [Documentation](https://docs.wagtail.io/en/stable/topics/streamfield.html) to know more about it's amazing features. 
+
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://reponame/blob/master/CONTRIBUTING.md) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://reponame/issues/new).
