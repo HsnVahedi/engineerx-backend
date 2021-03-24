@@ -87,6 +87,7 @@ The page model has a few fields:
 #### 4. Create development database:
     python manage.py makemigrations && python manage.py migrate
 #### 5. Initialize the database with randomly generated objects:
+    mkdir media && mv -vn downloads/ media/downloads/
     python manage.py initdb
 #### 6. Create an admin user:
     python manage.py createsuperuser
