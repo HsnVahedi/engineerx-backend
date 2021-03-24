@@ -73,7 +73,7 @@ Here is our blog's PostPage which inherits wagtail's Page:
 The page model has a few fields:
 
 - `sections`: Contains page's content. Check Wagtail's StreamField [Documentation](https://docs.wagtail.io/en/stable/topics/streamfield.html) to know more about it's amazing features.
-- `api_fields`: These readonly fields are required to expose page's information through REST api.
+- `api_fields`: These read-only fields are required to expose page's information through REST api.
 - `content_panels`: These panels are used by wagtail to create an appropriate django form for the page.
 
 
