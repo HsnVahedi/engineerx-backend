@@ -33,7 +33,7 @@ Key features of the project:
 - It uses [Jenkins](https://www.jenkins.io/) declarative pipeline syntax to implement [CI/CD](https://en.wikipedia.org/wiki/CI/CD) pipelines. (Pipeline as code)
 - Developers are able to write different kinds of tests and run them in a parallelized and non-blocking manner.
 - It uses [Terraform](https://www.terraform.io/) to provision the required cloud infrastructure so it's really easy to deploy the whole project and destroy it whenever it's not needed any more. (Infrastructure as code)
-- It has built on top of wagtail. Wagtail enables django developers to have a professional headless CMS which can be customized for many types of businesses.
+- It's built on top of wagtail. Wagtail enables django developers to have a professional headless CMS which can be customized for many types of businesses.
 
 ## What's included
 This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created by wagtail.
