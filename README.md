@@ -39,7 +39,7 @@ Key features of the project:
 - It has built on top of wagtail. Wagtail enables django developers to have a professional headless CMS which can be customized for many types of businesses.
 
 ## What's included
-This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created using wagtail.
+This repository contains the project's backend microservices. The most important microservice is a django project located [here](https://github.com/HsnVahedi/engineerx-backend/tree/main/engineerx), which is created by wagtail.
 
 Wagtail has many built-in features including Elastic Search integration. To see all of wagtail's built-in features, check [this](https://wagtail.io/features/#) out.
 
