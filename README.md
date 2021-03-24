@@ -16,6 +16,7 @@
 - [What's included](#whats-included)
 - [Run Development Environment](#run-development-environment)
 - [Run Production Environment](#run-production-environment)
+- [EngineerX code repositories](#engineerx-code-repositories)
 
 
 ## Introduction to EngineerX project
@@ -113,3 +114,21 @@ Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.
     python manage.py createsuperuser
 
 Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
+
+## EngineerX code repositories
+
+EngineerX is a big project and consists of several code bases:
+
+- [engineerx-aws-cli](https://github.com/HsnVahedi/engineerx-aws-cli)
+- [engineerx-aws-infrastructure](https://github.com/HsnVahedi/engineerx-aws-infrastructure)
+- [engineerx-aws-deployment](https://github.com/HsnVahedi/engineerx-aws-deployment)
+- [engineerx-backend](https://github.com/HsnVahedi/engineerx-backend)
+- [engineerx-frontend](https://github.com/HsnVahedi/engineerx-frontend)
+- [engineerx-integration](https://github.com/HsnVahedi/engineerx-integration)
+- [engineerx-backend-unittest](https://github.com/HsnVahedi/engineerx-backend-unittest)
+- [engineerx-frontend-unittest](https://github.com/HsnVahedi/engineerx-frontend-unittest)
+- [engineerx-integration-test](https://github.com/HsnVahedi/engineerx-integration-test)
+- [engineerx-efs-pv](https://github.com/HsnVahedi/engineerx-efs-pv)
+- [engineerx-efs-pvc](https://github.com/HsnVahedi/engineerx-efs-pv)
+- [engineerx-backend-latest-tag](https://github.com/HsnVahedi/engineerx-backend-latest-tag)
+- [engineerx-frontend-latest-tag](https://github.com/HsnVahedi/engineerx-frontend-latest-tag)
