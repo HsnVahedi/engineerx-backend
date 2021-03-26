@@ -119,12 +119,11 @@ Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.
     docker-compose pull
 #### 3. Start the production server:
     docker-compose up
-#### 4. Now open another terminal and execute bash in the django container:
-    docker-compose exec backend bash
-#### 5. Initialize the database with randomly generated objects:
-    python manage.py initdb
-#### 6. Create an admin user:
-    python manage.py createsuperuser
+#### 4. Now open another terminal and execute this `python manage.py initdb` in the django container:
+    docker-compose exec backend python manage.py initdb
+  
+#### 5. Create an admin user:
+    docker-compose exec backend python manage.py createsuperuser
 
 Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.1:8000/admin` and login if required.
 
