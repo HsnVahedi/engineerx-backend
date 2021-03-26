@@ -94,14 +94,14 @@ pipeline {
                 ]
             }
         }
-        stage('Invoke Production Deployment') {
-            steps {
-                build job: 'aws-deployment', parameters: [
-                    string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
-                    string(name: "REGION", value: "${env.REGION}"),
-                    string(name: "CLUSTER_NAME", value: "${env.CLUSTER_NAME}")
-                ]
-            }
-        }
+        // stage('Invoke Production Deployment') {
+        //     steps {
+        //         build job: 'aws-deployment', parameters: [
+        //             string(name: "BACKEND_VERSION", value: "${env.BUILD_ID}"),
+        //             string(name: "REGION", value: "${env.REGION}"),
+        //             string(name: "CLUSTER_NAME", value: "${env.CLUSTER_NAME}")
+        //         ]
+        //     }
+        // }
     }
 }
