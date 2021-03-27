@@ -24,7 +24,7 @@
 
 ## Introduction to [EngineerX project](http://a8c390f2223364021a14ec3fb45263a7-1113280492.us-east-2.elb.amazonaws.com)
 
-EngineerX is an open source web application designed for engineers and specialists. It lets them share their ideas, create tutorials, represent themselves, employ other specialists and ...
+[EngineerX](http://a8c390f2223364021a14ec3fb45263a7-1113280492.us-east-2.elb.amazonaws.com) is an open source web application designed for engineers and specialists. It lets them share their ideas, create tutorials, represent themselves, employ other specialists and ...
 
 Currently, The project is at it's first steps and includes a simple but awesome [Content Management System (CMS)](https://en.wikipedia.org/wiki/Content_management_system) that lets content providers to create and manage blog posts.
 
@@ -132,7 +132,7 @@ Now you can see the project is running on `127.0.0.1:8000/`. Now go to `127.0.0.
 
 ## EngineerX code repositories
 
-EngineerX is a big project and consists of several code bases:
+[EngineerX](http://a8c390f2223364021a14ec3fb45263a7-1113280492.us-east-2.elb.amazonaws.com) project consists of several code bases:
 
 - [engineerx-aws-cli](https://github.com/HsnVahedi/engineerx-aws-cli)
 - [engineerx-aws-infrastructure](https://github.com/HsnVahedi/engineerx-aws-infrastructure)
