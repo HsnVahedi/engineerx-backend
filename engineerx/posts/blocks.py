@@ -9,7 +9,7 @@ class CodeBlock(blocks.StructBlock):
     content = blocks.TextBlock()
 
     class Meta:
-        icon = 'image'
+        icon = 'cogs'
 
 
 class ImageBlock(blocks.StructBlock):
