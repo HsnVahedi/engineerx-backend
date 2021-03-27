@@ -4,6 +4,14 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 
+class CodeBlock(blocks.StructBlock):
+    language = blocks.CharBlock()
+    content = blocks.TextBlock()
+
+    class Meta:
+        icon = 'image'
+
+
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     caption = blocks.RichTextBlock(
@@ -25,6 +33,7 @@ class ParagraphBlock(blocks.RichTextBlock):
 class RowsBlock(blocks.StreamBlock):
     image = ImageBlock()
     paragraph = ParagraphBlock()
+    code = CodeBlock()
 
 
 class SectionBlock(blocks.StructBlock):
