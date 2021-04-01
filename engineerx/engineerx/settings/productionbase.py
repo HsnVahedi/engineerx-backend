@@ -3,8 +3,9 @@ import os
 
 DEBUG = False
 
-SECRET_KEY = '%w$&w@v=&ehm)zju&6#yl)(&ymh*)%lo8r=ln_=69fxl34aets'
-ALLOWED_HOSTS = ['*']
+# SECRET_KEY = '%w$&w@v=&ehm)zju&6#yl)(&ymh*)%lo8r=ln_=69fxl34aets'
+SECRET_KEY = os.environ['SECRET_KEY']
+ALLOWED_HOSTS = [os.environ['ALLOWED_HOST']]
 
 LOGGING = {
     'version': 1,
