@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'images',
     'common',
     'api',
+    'accounts',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -165,10 +166,10 @@ AUTH_USER_MODEL = "authentication.User"
 
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
 
-INITDB_USERS_SIZE = int(os.environ.get('INITDB_USERS_SIZE', 50))
-INITDB_EDITORS_SIZE = int(os.environ.get('INITDB_EDITORS_SIZE', 50))
-INITDB_MODERATORS_SIZE = int(os.environ.get('INITDB_MODERATORS_SIZE', 50))
-INITDB_POSTS_SIZE = int(os.environ.get('INITDB_POSTS_SIZE', 50))
+INITDB_USERS_SIZE = int(os.environ.get('INITDB_USERS_SIZE', 5))
+INITDB_EDITORS_SIZE = int(os.environ.get('INITDB_EDITORS_SIZE', 5))
+INITDB_MODERATORS_SIZE = int(os.environ.get('INITDB_MODERATORS_SIZE', 5))
+INITDB_POSTS_SIZE = int(os.environ.get('INITDB_POSTS_SIZE', 5))
 
 DEFAULT_RICHTEXT_FEATURES = [
     'h3', 'h4', 'h5', 'h6',

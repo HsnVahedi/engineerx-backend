@@ -1,11 +1,12 @@
 from faker import Faker
 from random import random
+import traceback
 
 from django.contrib.auth.models import Group
 
 from wagtail.images import get_image_model
 
-from home.models import PostPage, HomePage
+from posts.models import PostPage, PostsPage
 
 fake = Faker()
 Image = get_image_model()
@@ -57,8 +58,8 @@ def create_new_section():
 
 def create_new_post(owner, tags):
     post = PostPage(title=fake.sentence(), owner=owner)
-    home_page = HomePage.objects.first()
-    home_page.add_child(instance=post)
+    posts_page = PostsPage.objects.first()
+    posts_page.add_child(instance=post)
     post = PostPage.objects.get(slug=post.slug)
     if random() >= 0.5:
         images = Image.objects.all()
@@ -94,6 +95,8 @@ def create_new_posts(size):
             user = moderators[int(random() * len(moderators))]
             posts.append(create_new_post(user, tags))
             i += 1
-        except:
+        except Exception as e:
+            # print(e)
+            traceback.print_exc()
             continue
     return posts
