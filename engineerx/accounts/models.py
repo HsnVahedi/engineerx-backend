@@ -8,6 +8,7 @@ from wagtail.core.models import Orderable
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from accounts.forms import PersonalPageForm
+from wagtail.users.models import UserProfile
 
 
 class PersonalPages(Page):
@@ -28,6 +29,18 @@ class PersonalPage(Page):
         related_name='+'
     )
 
+    @property
+    def owner_info(self):
+        image = None
+        if UserProfile.objects.filter(user=self.owner).exists():
+            if self.owner.wagtail_userprofile.avatar:
+                image = self.owner.wagtail_userprofile.avatar.url
+        return {
+            'firstname': self.owner.first_name,
+            'lastname': self.owner.last_name,
+            'image': image,
+        }
+
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
         InlinePanel('related_accounts', label="Social Media Accounts"),
@@ -37,6 +50,7 @@ class PersonalPage(Page):
         InlinePanel('related_experiences', label="Experiences"),
         InlinePanel('related_skills', label="Skills"),
     ]
+
     promote_panels = []
     settings_panels = []
 
@@ -44,6 +58,7 @@ class PersonalPage(Page):
     subpage_types = []
 
     api_fields = [
+        APIField('owner_info'),
         APIField("related_accounts"),
         APIField('related_links'),
         APIField('related_fields'),
