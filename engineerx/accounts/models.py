@@ -6,6 +6,7 @@ from wagtail.api import APIField
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable
 from wagtail.core.models import Page
+from wagtail.images.api.fields import ImageRenditionField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from accounts.forms import PersonalPageForm
 from wagtail.users.models import UserProfile
@@ -65,6 +66,8 @@ class PersonalPage(Page):
         APIField('related_educations'),
         APIField('related_experiences'),
         APIField('related_skills'),
+        APIField('image', serializer=ImageRenditionField('min-1500x200')),
+        APIField('image_16x9', serializer=ImageRenditionField('fill-1600x900-c70', source='image')),
     ]
 
     base_form_class = PersonalPageForm
