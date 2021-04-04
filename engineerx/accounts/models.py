@@ -1,14 +1,14 @@
+from accounts.forms import PersonalPageForm
 from django.conf import settings
 from django.db import models
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import InlinePanel
 from wagtail.api import APIField
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable
 from wagtail.core.models import Page
 from wagtail.images.api.fields import ImageRenditionField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from accounts.forms import PersonalPageForm
 from wagtail.users.models import UserProfile
 
 
@@ -40,13 +40,12 @@ class PersonalPage(Page):
             'firstname': self.owner.first_name,
             'lastname': self.owner.last_name,
             'image': image,
+            'id': self.owner.id,
         }
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
         InlinePanel('related_accounts', label="Social Media Accounts"),
-        InlinePanel('related_links', label="Links"),
-        InlinePanel('related_fields', label="Fields"),
         InlinePanel('related_educations', label="Educations"),
         InlinePanel('related_experiences', label="Experiences"),
         InlinePanel('related_skills', label="Skills"),
@@ -60,9 +59,8 @@ class PersonalPage(Page):
 
     api_fields = [
         APIField('owner_info'),
+        APIField('owner'),
         APIField("related_accounts"),
-        APIField('related_links'),
-        APIField('related_fields'),
         APIField('related_educations'),
         APIField('related_experiences'),
         APIField('related_skills'),
@@ -72,6 +70,10 @@ class PersonalPage(Page):
 
     base_form_class = PersonalPageForm
 
+    def save(self, *args, **kwargs):
+        self.slug = f'{self.owner.id}';
+        return super().save(*args, **kwargs)
+
 
 class PersonalPageRelatedAccount(Orderable):
     GITHUB = 'Github'
@@ -79,12 +81,20 @@ class PersonalPageRelatedAccount(Orderable):
     INSTAGRAM = 'Instagram'
     FACEBOOK = 'Facebook'
 
-    SOCIAL_MEDIA_CHOICES = [
-        (GITHUB, GITHUB),
-        (LINKEDIN, LINKEDIN),
-        (INSTAGRAM, INSTAGRAM),
-        (FACEBOOK, FACEBOOK),
+    SOCIAL_NETWORKS = [
+        GITHUB, LINKEDIN, INSTAGRAM, FACEBOOK
     ]
+
+    SOCIAL_MEDIA_CHOICES = [
+        (x, x) for x in SOCIAL_NETWORKS
+    ]
+
+    # SOCIAL_MEDIA_CHOICES = [
+    #     (GITHUB, GITHUB),
+    #     (LINKEDIN, LINKEDIN),
+    #     (INSTAGRAM, INSTAGRAM),
+    #     (FACEBOOK, FACEBOOK),
+    # ]
 
     page = ParentalKey(
         PersonalPage,
@@ -97,36 +107,6 @@ class PersonalPageRelatedAccount(Orderable):
     api_fields = [
         APIField("social_media"),
         APIField("url"),
-    ]
-
-
-class PersonalPageRelatedLink(Orderable):
-    page = ParentalKey(
-        PersonalPage,
-        on_delete=models.CASCADE,
-        related_name='related_links'
-    )
-    name = models.CharField(max_length=255)
-    url = models.URLField()
-
-    api_fields = [
-        APIField("name"),
-        APIField("url"),
-    ]
-
-
-class PersonalPageRelatedField(Orderable):
-    page = ParentalKey(
-        PersonalPage,
-        on_delete=models.CASCADE,
-        related_name='related_fields'
-    )
-    name = models.CharField(max_length=255)
-    value = models.TextField()
-
-    api_fields = [
-        APIField("name"),
-        APIField("value"),
     ]
 
 
@@ -164,7 +144,6 @@ class Experience(Orderable):
     )
     begin = models.DateField(blank=True, null=True)
     end = models.DateField(blank=True, null=True)
-    link = models.URLField(blank=True, null=True)
 
     api_fields = [
         APIField("company"),
@@ -172,7 +151,6 @@ class Experience(Orderable):
         APIField('role'),
         APIField("begin"),
         APIField("end"),
-        APIField("link"),
     ]
 
 

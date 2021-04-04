@@ -54,11 +54,13 @@ class PostPage(Page):
     def owner_info(self):
         image = None
         if UserProfile.objects.filter(user=self.owner).exists():
-            image = self.owner.wagtail_userprofile.avatar.url
+            if self.owner.wagtail_userprofile.avatar:
+                image = self.owner.wagtail_userprofile.avatar.url
         return {
             'firstname': self.owner.first_name,
             'lastname': self.owner.last_name,
             'image': image,
+            'id': self.owner.id
         }
 
     api_fields = [
@@ -67,6 +69,7 @@ class PostPage(Page):
         APIField('sections'),
         APIField('tags'),
         APIField('owner_info'),
+        APIField('owner'),
     ]
 
     parent_page_types = ['posts.PostsPage']

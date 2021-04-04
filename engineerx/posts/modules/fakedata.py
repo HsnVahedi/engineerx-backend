@@ -7,17 +7,10 @@ from django.contrib.auth.models import Group
 from wagtail.images import get_image_model
 
 from posts.models import PostPage, PostsPage
+from common.modules.fakedata import create_fake_richtext
 
 fake = Faker()
 Image = get_image_model()
-
-
-def create_fake_richtext():
-    size = int(random() * 10) + 1
-    richtext = ''
-    for i in range(size):
-        richtext += f'<p>{fake.text()}</p>'
-    return richtext
 
 
 def create_paragraph_block():
