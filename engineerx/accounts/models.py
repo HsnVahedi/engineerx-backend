@@ -10,6 +10,7 @@ from wagtail.core.models import Page
 from wagtail.images.api.fields import ImageRenditionField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.users.models import UserProfile
+from django.shortcuts import redirect
 
 
 class PersonalPages(Page):
@@ -73,6 +74,23 @@ class PersonalPage(Page):
     def save(self, *args, **kwargs):
         self.slug = f'{self.owner.id}';
         return super().save(*args, **kwargs)
+
+    def serve(self, request, *args, **kwargs):
+        return redirect(f'{settings.FRONTEND_URL}/specialists/{self.slug}')
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super().get_url_parts(*args, **kwargs)
+
+        # if url_parts is None:
+        #     # in this case, the page doesn't have a well-defined URL in the first place -
+        #     # for example, it's been created at the top level of the page tree
+        #     # and hasn't been associated with a site record
+        #     return None
+        if settings.PRODUCTION:
+            site_id, root_url, page_path = url_parts
+            return site_id, root_url, f'/specialists/{self.slug}'
+        else:
+            return url_parts
 
 
 class PersonalPageRelatedAccount(Orderable):

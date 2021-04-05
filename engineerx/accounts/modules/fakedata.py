@@ -17,7 +17,7 @@ logger = logging.getLogger("fake personal pages:")
 
 def create_new_social_account(page, social_media):
     account = PersonalPageRelatedAccount(
-        page=page, social_media=social_media, url=f'{social_media}.com'
+        page=page, social_media=social_media, url='https://google.com'
     )
     account.save()
     logger.info(f'Created social media account: {social_media}')
