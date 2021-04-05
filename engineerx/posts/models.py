@@ -10,6 +10,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
 from posts.blocks import SectionsBlock
+from accounts.models import PersonalPage
 from wagtail.images.api.fields import ImageRenditionField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.users.models import UserProfile
@@ -60,7 +61,8 @@ class PostPage(Page):
             'firstname': self.owner.first_name,
             'lastname': self.owner.last_name,
             'image': image,
-            'id': self.owner.id
+            'id': self.owner.id,
+            'has_personal_page': PersonalPage.objects.filter(owner__id=self.owner.id).exists()
         }
 
     api_fields = [
