@@ -1,5 +1,6 @@
 import os
 import logging
+import time
 
 from django.conf import settings
 from django.core.files import File
@@ -25,4 +26,5 @@ def create_wagtail_images():
         logger.info(
             f'Successfully created image: {file}'
         )
+        time.sleep(settings.SLEEP_TIME)
     return images

@@ -1,8 +1,10 @@
 from faker import Faker
 from random import random
 import traceback
+import time
 
 from django.contrib.auth.models import Group
+from django.conf import settings
 
 from wagtail.images import get_image_model
 
@@ -36,6 +38,7 @@ def create_rows(size):
             rows.append(create_image_block())
         else:
             rows.append(create_paragraph_block())
+        time.sleep(settings.SLEEP_TIME)
     return rows
 
 
@@ -74,6 +77,7 @@ def create_tags(size):
     tags = []
     for i in range(size):
         tags.append(fake.word())
+        time.sleep(settings.SLEEP_TIME)
     return tags
 
 
@@ -88,6 +92,7 @@ def create_new_posts(size):
             user = moderators[int(random() * len(moderators))]
             posts.append(create_new_post(user, tags))
             i += 1
+            time.sleep(settings.SLEEP_TIME)
         except Exception as e:
             # print(e)
             traceback.print_exc()

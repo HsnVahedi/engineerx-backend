@@ -1,9 +1,11 @@
+import time
 from accounts.models import *
 from faker import Faker
 from random import random
 import logging
 
 from django.contrib.auth.models import Group
+from django.conf import settings
 
 from wagtail.images import get_image_model
 
@@ -29,6 +31,7 @@ def create_new_social_accounts(page):
     for social_network in PersonalPageRelatedAccount.SOCIAL_NETWORKS:
         if random() > 0.5:
             create_new_social_account(page, social_network)
+            time.sleep(settings.SLEEP_TIME)
     page.save()
     page.save_revision().publish()
 
@@ -56,6 +59,7 @@ def create_new_educations(page):
     for i in range(10):
         if random() > 0.8:
             create_new_education(page)
+            time.sleep(settings.SLEEP_TIME)
     page.save()
     page.save_revision().publish()
 
@@ -83,6 +87,7 @@ def create_new_experiences(page):
     for i in range(10):
         if random() > 0.8:
             create_new_experience(page)
+            time.sleep(settings.SLEEP_TIME)
     page.save()
     page.save_revision().publish()
 
@@ -102,6 +107,7 @@ def create_new_skills(page):
     for i in range(15):
         if random() > 0.8:
             create_new_skill(page)
+            time.sleep(settings.SLEEP_TIME)
     page.save()
     page.save_revision().publish()
 
@@ -131,13 +137,16 @@ def create_new_personal_pages():
     pages = []
     for moderator in moderators:
         pages.append(create_new_personal_page(moderator))
+        time.sleep(settings.SLEEP_TIME)
     for editor in editors:
         pages.append(create_new_personal_page(editor))
+        time.sleep(settings.SLEEP_TIME)
 
     for page in pages:
         create_new_social_accounts(page)
         create_new_educations(page)
         create_new_experiences(page)
         create_new_skills(page)
+        time.sleep(settings.SLEEP_TIME)
 
     return pages

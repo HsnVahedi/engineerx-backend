@@ -1,5 +1,6 @@
 import os
 import logging
+import time
 from faker import Faker
 from random import random
 
@@ -63,6 +64,7 @@ def create_users(size, is_moderator=False, is_editor=False):
                 create_user(avatars[random_index], is_moderator, is_editor)
             )
             i += 1
+            time.sleep(settings.SLEEP_TIME)
         except Exception as e:
             continue
     return users

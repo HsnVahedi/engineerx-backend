@@ -185,3 +185,5 @@ RANDOM_AVATAR_URL = 'https://i.pravatar.cc'
 FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
 
 PRODUCTION = False
+
+SLEEP_TIME = 0.5
